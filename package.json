@@ -16,6 +16,18 @@
     "url": "https://github.com/EdG570/express-app/issues"
   },
   "homepage": "https://github.com/EdG570/express-app#readme",
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
