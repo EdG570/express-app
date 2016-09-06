@@ -1,0 +1,38 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdG570/express-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdG570/express-app/issues"
+  },
+  "homepage": "https://github.com/EdG570/express-app#readme",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-istanbul": "^2.0.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-watch": "^2.0.2",
+    "chai": "^3.5.0",
+    "chai-immutable": "^1.6.0",
+    "cross-env": "^2.0.0",
+    "eslint": "^3.1.1",
+    "lint-staged": "^3.0.0",
+    "mocha": "^3.0.2",
+    "nyc": "^8.1.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
