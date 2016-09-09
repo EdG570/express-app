@@ -52,6 +52,7 @@ export default class Todos {
 
           if (req.body.description) foundObj.description = req.body.description;
           if (req.body.priority) foundObj.priority = req.body.priority;
+          if (req.body.isComplete) foundObj.isComplete = req.body.isComplete;
 
           foundObj.save((err, updatedObj) => {
             if (err) {
