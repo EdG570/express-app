@@ -1,0 +1,75 @@
+{ 
+  "user": {
+    "name": "Ed Glazenski",
+    "email": "cole570@hotmail.com",
+    "password": "abc123",
+    "todos": {
+      "activeLists": [
+        {
+          "name": "chores",
+          "tasks": [
+            {
+              "description": "Cut the grass",
+              "isComplete": false,
+              "priority": "medium"
+            },
+            {
+              "description": "Wash clothes",
+              "isComplete": false,
+              "priority": "high"
+            },
+            {
+              "description": "Take out the garbage",
+              "isComplete": true,
+              "priority": "high"
+            }
+          ]
+        },
+
+         {
+          "name": "vacation",
+          "tasks": [
+            {
+              "description": "Buy swimsuit",
+              "isComplete": false,
+              "priority": "medium"
+            },
+            {
+              "description": "Fill car with gas",
+              "isComplete": false,
+              "priority": "high"
+            },
+            {
+              "description": "Buy suntan lotion",
+              "isComplete": true,
+              "priority": "high"
+            }
+          ]
+        }
+      ],
+
+      "archivedLists": [
+        {
+          "name": "Christmas",
+          "tasks": [
+            {
+              "description": "Get brother a gift",
+              "isComplete": true,
+              "priority": "high"
+            },
+            {
+              "description": "Bake cookies",
+              "isComplete": true,
+              "priority": "medium"
+            },
+            {
+              "description": "Buy eggnog",
+              "isComplete": true,
+              "priority": "low"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
