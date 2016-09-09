@@ -28,6 +28,7 @@ export default class Todos {
   createTodo(req, res) {
     new TaskModel({
       description: req.body.description,
+      priority: req.body.priority,
       isComplete: false
     }).save(function (err, data) {
       if (err) {
