@@ -40,14 +40,8 @@ export default class Todos {
   updateTodo(req, res) {
     const query = { _id: req.params.id };
 
-    // TaskModel.findOneAndUpdate(query, req.body.description, {upsert:true}, (err, results) => {
-    //   if (err) return res.send(500, { error: err });
-    //   return res.send("succesfully saved");
-    // });
-
-     TaskModel.findOne(query, (err, foundObj) => {
+    TaskModel.findOne(query, (err, foundObj) => {
       if (err) { 
-        console.log(error);
         res.status(500).send;
       } else {
 
@@ -56,17 +50,11 @@ export default class Todos {
 
         } else {
 
-          if (req.body.description) {
-            foundObj.description = req.body.description;
-          }
-
-          if (req.body.priority) {
-            foundObj.priority = req.body.priority;
-          }
+          if (req.body.description) foundObj.description = req.body.description;
+          if (req.body.priority) foundObj.priority = req.body.priority;
 
           foundObj.save((err, updatedObj) => {
             if (err) {
-              console.log(err);
               res.status(500).send;
             } else {
               res.send(updatedObj);
@@ -74,7 +62,6 @@ export default class Todos {
           });
         }
       }
-
     });
   }
 };
