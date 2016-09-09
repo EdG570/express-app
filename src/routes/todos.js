@@ -9,6 +9,7 @@ export default class Todos {
 
     this.app.put('/todos/:id', this.updateTodo);
     this.app.post('/todos', this.createTodo);
+    this.app.delete('/todos/:id', this.deleteTodo);
   }
 
   getTodos(req, res) {
@@ -42,11 +43,11 @@ export default class Todos {
 
     TaskModel.findOne(query, (err, foundObj) => {
       if (err) { 
-        res.status(500).send;
+        res.status(500).send();
       } else {
 
         if (!foundObj) {
-          res.status(404).send;
+          res.status(404).send();
 
         } else {
 
@@ -56,13 +57,22 @@ export default class Todos {
 
           foundObj.save((err, updatedObj) => {
             if (err) {
-              res.status(500).send;
+              res.status(500).send();
             } else {
               res.send(updatedObj);
             }
           });
         }
       }
+    });
+  }
+
+  deleteTodo(req, res) {
+    const query = { _id: req.params.id };
+
+    TaskModel.findOneAndRemove(query, (err, foundObj) => {
+      if (err) return res.status(500).send();
+      return res.status(200).send();
     });
   }
 };
