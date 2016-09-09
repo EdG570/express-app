@@ -41,30 +41,15 @@ export default class Todos {
 
   updateTodo(req, res) {
     const query = { _id: req.params.id };
+    const update = {};
 
-    TaskModel.findOne(query, (err, foundObj) => {
-      if (err) { 
-        res.status(500).send();
-      } else {
+    if (req.body.description) update.description = req.body.description;
+    if (req.body.priority) update.priority = req.body.priority;
+    if (req.body.isComplete) update.isComplete = req.body.isComplete;
 
-        if (!foundObj) {
-          res.status(404).send();
-
-        } else {
-
-          if (req.body.description) foundObj.description = req.body.description;
-          if (req.body.priority) foundObj.priority = req.body.priority;
-          if (req.body.isComplete) foundObj.isComplete = req.body.isComplete;
-
-          foundObj.save((err, updatedObj) => {
-            if (err) {
-              res.status(500).send();
-            } else {
-              res.send(updatedObj);
-            }
-          });
-        }
-      }
+    TaskModel.findOneAndUpdate(query, update, { upsert: true }, (err, foundObj) => {
+      if (err) res.json(err);
+      res.json(foundObj);
     });
   }
 
