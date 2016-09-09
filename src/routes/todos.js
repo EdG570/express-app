@@ -26,11 +26,15 @@ export default class Todos {
   }
 
   createTodo(req, res) {
-    let task = new TaskModel({
+    new TaskModel({
       description: req.body.description,
       isComplete: false
+    }).save(function (err, data) {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(data);
+      }
     });
-
-    res.json(task);
   }
 };
