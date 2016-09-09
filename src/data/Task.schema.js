@@ -1,7 +1,7 @@
 import db from '../data/db';
 import {ObjectId, Schema} from 'mongoose';
 
-const TaskSchema = new Schema({
+const TaskSchema = Schema({
     description: {
         type: String,
         required: true
@@ -12,7 +12,6 @@ const TaskSchema = new Schema({
     },
     priority: {
         type: Number,
-        required: true,
         default: 1,
         min: 1,
         max: 100
@@ -20,4 +19,4 @@ const TaskSchema = new Schema({
 });
 
 
-export default db.model('Tasks', TaskSchema);
+export var TaskModel = db.model('Tasks', TaskSchema);

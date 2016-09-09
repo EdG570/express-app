@@ -12,6 +12,8 @@ app.listen(8080, () => {
   console.log('Express server is listening on port:8080');
 });
 
+app.use(bodyParser());
+
 app.set('db', db);
 
 let todos = new Todos(app);

@@ -1,7 +1,8 @@
 import db from '../data/db';
 import {ObjectId, Schema} from 'mongoose';
 
-const ListSchema = new Schema({
+const ListSchema = Schema({
+
     title: {
         type: String,
         required: true
