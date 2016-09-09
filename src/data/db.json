@@ -62,9 +62,3 @@
     }
   ]
 }
-
-
-
-
-
-var completedTasks = db.find({isComplete: true});

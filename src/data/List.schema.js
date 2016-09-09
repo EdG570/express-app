@@ -1,6 +1,7 @@
+import db from '../data/db';
 import {ObjectId, Schema} from 'mongoose';
 
-export default new Schema({
+const ListSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -15,3 +16,5 @@ export default new Schema({
         ObjectId
     ]
 });
+
+export default db.model('Lists', ListSchema)

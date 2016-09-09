@@ -1,19 +1,23 @@
+import db from '../data/db';
 import {ObjectId, Schema} from 'mongoose';
 
-export default new Schema({
+const TaskSchema = new Schema({
     description: {
         type: String,
-            required: true
+        required: true
     },
     isComplete: {
         type: Boolean,
-            required: true
+        required: true
     },
     priority: {
         type: Number,
-            required: true,
-    default: 1,
-            min: 1,
-            max: 100
+        required: true,
+        default: 1,
+        min: 1,
+        max: 100
     }
 });
+
+
+export default db.model('Tasks', TaskSchema);
