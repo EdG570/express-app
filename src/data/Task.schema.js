@@ -15,8 +15,7 @@ const TaskSchema = Schema({
         default: 1,
         min: 1,
         max: 100
-    }
+    }   
 });
-
 
 export var TaskModel = db.model('Tasks', TaskSchema);

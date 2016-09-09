@@ -44,6 +44,7 @@
     "lint-staged": "^3.0.0",
     "mocha": "^3.0.2",
     "mocha-traceur": "^2.1.0",
+    "mongoose-auto-increment": "^5.0.1",
     "nyc": "^8.1.0",
     "traceur": "0.0.111"
   },
