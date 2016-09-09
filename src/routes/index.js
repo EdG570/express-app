@@ -6,9 +6,7 @@ export default class Index {
   }
 
   getIndex(req, res, next) {
-    res.send(`
-      <h1>Welcome to the Todo App!</h1>
-    `);
+    res.json('Welcome');
   }
 
 }
