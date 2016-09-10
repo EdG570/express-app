@@ -16,8 +16,4 @@ app.use(bodyParser());
 
 app.set('db', db);
 
-let todos = new Todos(app);
-let index = new Index(app);
-let profile = new Profile(app);
-
 export default app;
