@@ -48,7 +48,7 @@ export default class Todos {
     if (req.body.isComplete) update.isComplete = req.body.isComplete;
 
     TaskModel.findOneAndUpdate(query, update, { upsert: true }, (err, foundObj) => {
-      if (err) res.json(err);
+      if (err) return res.json(err);
       res.json(foundObj);
     });
   }
