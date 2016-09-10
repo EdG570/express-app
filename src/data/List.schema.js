@@ -11,11 +11,11 @@ const ListSchema = Schema({
     active: {
         type: Boolean,
         required: true
-    },
+    }//,
 
-    tasks: [
-        ObjectId
-    ]
+    // tasks: [
+    //     ObjectId
+    // ]
 });
 
-export default db.model('Lists', ListSchema)
+export var ListModel = db.model('Lists', ListSchema);
