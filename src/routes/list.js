@@ -9,7 +9,7 @@ export default class List {
     this.app.delete('/lists/:listid', this.deleteList);
     // this.app.get('/todos/active', this.getActiveTodos);
 
-    // this.app.put('/todos/:id', this.updateTodo);
+    this.app.put('/lists/:listid', this.updateList);
     // this.app.post('/todos', this.createTodo);
     // this.app.delete('/todos/:id', this.deleteTodo);
   }
@@ -40,19 +40,18 @@ export default class List {
     });
   }
 
-  // updateTodo(req, res) {
-  //   const query = { _id: req.params.id };
-  //   const update = {};
+  updateList(req, res) {
+    const query = { _id: req.params.listid };
+    const update = {};
 
-  //   if (req.body.description) update.description = req.body.description;
-  //   if (req.body.priority) update.priority = req.body.priority;
-  //   if (req.body.isComplete) update.isComplete = req.body.isComplete;
+    if (req.body.title) update.title = req.body.title;
+    if (req.body.active) update.active = req.body.active;
 
-  //   TaskModel.findOneAndUpdate(query, update, { upsert: true }, (err, foundObj) => {
-  //     if (err) return res.json(err);
-  //     res.json(foundObj);
-  //   });
-  // }
+    ListModel.findOneAndUpdate(query, update, { upsert: true }, (err, foundObj) => {
+      if (err) return res.json(err);
+      res.json(foundObj);
+    });
+  }
 
   deleteList(req, res) {
     const query = { _id: req.params.listid };
