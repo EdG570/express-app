@@ -6,6 +6,7 @@ export default class List {
     this.app = app;
     this.app.get('/lists', this.getLists);
     this.app.post('/lists', this.createList);
+    this.app.delete('/lists/:listid', this.deleteList);
     // this.app.get('/todos/active', this.getActiveTodos);
 
     // this.app.put('/todos/:id', this.updateTodo);
@@ -14,10 +15,9 @@ export default class List {
   }
 
   getLists(req, res) {
-    res.send('yo');
-    // ListModel.find({}, function(err, results) {
-    //   res.json(results);
-    // });
+    ListModel.find({}, function(err, results) {
+      res.json(results);
+    });
   }
 
   // getActiveTodos(req, res) {
@@ -54,12 +54,12 @@ export default class List {
   //   });
   // }
 
-  // deleteTodo(req, res) {
-  //   const query = { _id: req.params.id };
+  deleteList(req, res) {
+    const query = { _id: req.params.listid };
 
-  //   TaskModel.findOneAndRemove(query, (err, foundObj) => {
-  //     if (err) return res.status(500).send();
-  //     return res.status(200).send();
-  //   });
-  // }
+    ListModel.findOneAndRemove(query, (err, foundObj) => {
+      if (err) return res.status(500).send();
+      return res.status(200).send();
+    });
+  }
 };
