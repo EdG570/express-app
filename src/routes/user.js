@@ -6,6 +6,7 @@ export default class User {
     this.app = app;
     this.app.get('/user/:userid', this.getUser);
     this.app.post('/user', this.createUser);
+    this.app.put('/user/:userid', this.updateUser);
   }
 
   getUser(req, res, next) {
@@ -31,4 +32,17 @@ export default class User {
     });
   }
 
+  updateUser(req, res) {
+    const query = { _id: req.params.userid };
+    const update = {};
+
+    if (req.body.name) update.name = req.body.name;
+    if (req.body.email) update.email = req.body.email;
+    if (req.body.password) update.password = req.body.password;
+
+    UserModel.findOneAndUpdate(query, update, { upsert: true }, (err, foundObj) => {
+      if (err) return res.json(err);
+      res.json(foundObj);
+    });
+  }
 }
