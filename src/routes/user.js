@@ -7,6 +7,15 @@ export default class User {
     this.app.get('/user/:userid', this.getUser);
     this.app.post('/user', this.createUser);
     this.app.put('/user/:userid', this.updateUser);
+    this.app.delete('/user/:userid', this.deleteUser);
+    this.app.get('/users', this.getUsers);
+  }
+
+  getUsers(req, res, next) {
+    UserModel.find({}, (err, results) => {
+      if (err) res.json(err);
+      res.json(results);
+    });
   }
 
   getUser(req, res, next) {
@@ -43,6 +52,16 @@ export default class User {
     UserModel.findOneAndUpdate(query, update, { upsert: true }, (err, foundObj) => {
       if (err) return res.json(err);
       res.json(foundObj);
+    });
+  }
+
+  deleteUser(req, res, next) {
+    const id = req.params.userid;
+    const query = { _id: id };
+
+    UserModel.findOneAndRemove(query, (err, foundObj) => {
+      if (err) return res.status(500).send();
+      return res.status(200).send();
     });
   }
 }
