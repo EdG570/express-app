@@ -18,4 +18,4 @@ const ListSchema = Schema({
     // ]
 });
 
-export var ListModel = db.model('Lists', ListSchema);
+export const ListModel = db.model('Lists', ListSchema);

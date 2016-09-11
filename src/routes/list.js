@@ -14,9 +14,10 @@ export default class List {
   }
 
   getLists(req, res) {
-    ListModel.find({}, function(err, results) {
-      res.json(results);
-    });
+    res.send('yo');
+    // ListModel.find({}, function(err, results) {
+    //   res.json(results);
+    // });
   }
 
   // getActiveTodos(req, res) {
