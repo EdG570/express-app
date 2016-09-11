@@ -13,8 +13,7 @@ const UserSchema = Schema({
     },
     password: {
         type: Schema.Types.Mixed,
-        required: true,
-        unique: true
+        required: true
     },
     activeLists: [],
     archivedLists: []
