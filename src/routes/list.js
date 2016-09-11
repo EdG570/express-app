@@ -7,7 +7,8 @@ export default class List {
     this.app.get('/lists', this.getLists);
     this.app.post('/lists', this.createList);
     this.app.delete('/lists/:listid', this.deleteList);
-    // this.app.get('/todos/active', this.getActiveTodos);
+    this.app.get('/lists/active', this.getActiveLists);
+    this.app.get('/lists/archived', this.getArchivedLists);
 
     this.app.put('/lists/:listid', this.updateList);
     // this.app.post('/todos', this.createTodo);
@@ -20,12 +21,19 @@ export default class List {
     });
   }
 
-  // getActiveTodos(req, res) {
-  //   TaskModel.find({isComplete: false}, (err, results) => {
-  //     if (err) res.json(err);
-  //     res.json(results);
-  //   });
-  // }
+  getActiveLists(req, res) {
+    ListModel.find({active: true}, (err, results) => {
+      if (err) res.json(err);
+      res.json(results);
+    });
+  }
+
+  getArchivedLists(req, res) {
+    ListModel.find({active: false}, (err, results) => {
+      if (err) res.json(err);
+      res.json(results);
+    });
+  }
 
   createList(req, res) {
     new ListModel({
