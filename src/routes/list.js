@@ -5,14 +5,11 @@ export default class List {
   constructor (app) {
     this.app = app;
     this.app.get('/lists', this.getLists);
-    this.app.post('/lists', this.createList);
-    this.app.delete('/lists/:listid', this.deleteList);
     this.app.get('/lists/active', this.getActiveLists);
     this.app.get('/lists/archived', this.getArchivedLists);
-
+    this.app.post('/lists', this.createList);
+    this.app.delete('/lists/:listid', this.deleteList);
     this.app.put('/lists/:listid', this.updateList);
-    // this.app.post('/todos', this.createTodo);
-    // this.app.delete('/todos/:id', this.deleteTodo);
   }
 
   getLists(req, res) {
