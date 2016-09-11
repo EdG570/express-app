@@ -15,7 +15,12 @@ const TaskSchema = Schema({
         default: 1,
         min: 1,
         max: 100
-    }
+    },
+    listId: {
+        required: true,
+        type: Schema.Types.ObjectId,
+        ref: 'Lists'
+    } 
 });
 
 export var TaskModel = db.model('Tasks', TaskSchema);

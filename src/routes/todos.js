@@ -5,15 +5,24 @@ export default class Todos {
   constructor (app) {
     this.app = app;
     this.app.get('/todos', this.getTodos);
+    this.app.get('/todos/:listid', this.getListTodos);
     this.app.get('/todos/active', this.getActiveTodos);
 
     this.app.put('/todos/:id', this.updateTodo);
-    this.app.post('/todos', this.createTodo);
+    this.app.post('/todos/:listid', this.createTodo);
     this.app.delete('/todos/:id', this.deleteTodo);
   }
 
   getTodos(req, res) {
     TaskModel.find({}, function(err, results) {
+      res.json(results);
+    });
+  }
+
+  getListTodos(req, res) {
+    var id = req.params.listid;
+
+    TaskModel.find({listId: id}, function(err, results) {
       res.json(results);
     });
   }
@@ -26,10 +35,13 @@ export default class Todos {
   }
 
   createTodo(req, res) {
+    var id = req.params.listid;
+
     new TaskModel({
       description: req.body.description,
       priority: req.body.priority,
-      isComplete: false
+      isComplete: false,
+      listId: id
     }).save(function (err, data) {
       if (err) {
         res.json(err);
