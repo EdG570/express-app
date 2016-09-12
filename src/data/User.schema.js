@@ -14,9 +14,7 @@ const UserSchema = Schema({
     password: {
         type: Schema.Types.Mixed,
         required: true
-    },
-    activeLists: [],
-    archivedLists: []
+    }
 });
 
 export var UserModel = db.model('Users', UserSchema);

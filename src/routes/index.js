@@ -6,7 +6,7 @@ export default class Index {
   }
 
   getIndex(req, res, next) {
-    res.json('Welcome');
+    res.json('ok');
   }
 
 }
