@@ -5,7 +5,8 @@ export default class Todos {
   constructor (app) {
     this.app = app;
     this.app.get('/todos', this.getTodos);
-    this.app.get('/todos/:listid', this.getListTodos);
+    //this.app.get('/todos/:listid', this.getListTodos);
+    this.app.get('/todos/:id', this.getTodo);
     this.app.get('/todos/active', this.getActiveTodos);
 
     this.app.put('/todos/:id', this.updateTodo);
@@ -19,12 +20,25 @@ export default class Todos {
     });
   }
 
+  getTodo(req, res) {
+    var id = req.params.id;
+
+
+    TaskModel.find({_id: id})
+        .populate('listId')
+        .exec(function(err, results) {
+          res.json(results);
+        });
+  }
+
   getListTodos(req, res) {
     var id = req.params.listid;
 
-    TaskModel.find({listId: id}, function(err, results) {
-      res.json(results);
-    });
+    TaskModel.find({listId: id})
+        .populate('listId')
+        .exec(function(err, results) {
+          res.json(results);
+        });
   }
 
   getActiveTodos(req, res) {
@@ -36,6 +50,10 @@ export default class Todos {
 
   createTodo(req, res) {
     var id = req.params.listid;
+
+    /**
+     * TODO: Error check that list exists
+     */
 
     new TaskModel({
       description: req.body.description,
