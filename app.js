@@ -9,8 +9,14 @@ import db from './src/data/db.json';
 
 let app = express();
 
-app.listen(8080, () => {
-  console.log('Express server is listening on port:8080');
+app.listen(3000, () => {
+  console.log('Express server is listening on port:3000');
+});
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
 app.use(bodyParser());
