@@ -3,17 +3,13 @@ import mongoose from 'mongoose';
 
 let config = fs.readFileSync('./config.json', 'utf8');
 
-if (config) {
-    config = JSON.parse(config);
-}
-console.log(config.dbpath);
+if (config) { config = JSON.parse(config); }
 
 let db = mongoose.connect(config.dbpath);
 
 db.connection.on('error', console.error.bind(console, 'connection error:'));
 db.connection.on('open', function() {
-    console.log('CONNECTED');
-});
+    console.log('CONNECTED'); });
 db.connection.on('close', function() {
     console.log('DISCONNECTED');
 });
