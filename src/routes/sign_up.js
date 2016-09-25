@@ -1,10 +1,24 @@
 import { UserModel as User } from '../data/User.schema';
+import jwt from 'jwt-simple';
+import { config } from '../../secret';
+import fs from 'fs';
 
 export default class SignUp {
-
   constructor (app) {
     this.app = app;
     this.app.post('/signup', this.signup);
+  }
+
+  static secretForUser() {
+    let config = fs.readFileSync('./config.json', 'utf8');
+    if (config) { config = JSON.parse(config); }
+    return config.secret;
+  }
+
+  static tokenForUser(user) {
+    const timestamp = new Date().getTime();
+    const secret = SignUp.secretForUser();
+    return jwt.encode({ sub: user.id, iat: timestamp }, secret);
   }
 
   signup(req, res, next) {
@@ -32,7 +46,7 @@ export default class SignUp {
             res.json(err);
           }
           else {
-            res.json({ success: true });
+            res.json({ token: SignUp.tokenForUser(user) });
           }
       });
     });
