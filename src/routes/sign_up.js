@@ -4,10 +4,10 @@ export default class SignUp {
 
   constructor (app) {
     this.app = app;
-    this.app.post('/signup', this.authenticate);
+    this.app.post('/signup', this.signup);
   }
 
-  authenticate(req, res, next) {
+  signup(req, res, next) {
     const email = req.body.email;
     const password = req.body.password;
 
@@ -28,10 +28,9 @@ export default class SignUp {
             res.json(err);
           }
           else {
-            res.json(data);
+            res.json({ success: true });
           }
       });
     });
   }
-
 };

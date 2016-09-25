@@ -29,7 +29,6 @@ export default class User {
 
   createUser(req, res, next) {
     new UserModel({
-      name: req.body.name,
       email: req.body.email,
       password: req.body.password
     }).save(function (err, data) {
