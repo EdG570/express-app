@@ -2,19 +2,16 @@ import db from '../data/db';
 import {ObjectId, Schema} from 'mongoose';
 
 const UserSchema = Schema({
-    name: {
-        type: String,
-        required: true
-    },
     email: {
-        type: Schema.Types.Mixed,
+        type: String,
         required: true,
-        unique: true
+        unique: true,
+        lowercase: true
     },
     password: {
-        type: Schema.Types.Mixed,
+        type: String,
         required: true
     }
 });
 
-export var UserModel = db.model('Users', UserSchema);
+export const UserModel = db.model('Users', UserSchema);

@@ -5,8 +5,8 @@ export default class Todos {
   constructor (app) {
     this.app = app;
     this.app.get('/todos', this.getTodos);
-    //this.app.get('/todos/:listid', this.getListTodos);
-    this.app.get('/todos/:id', this.getTodo);
+    this.app.get('/todos/:listid', this.getListTodos);
+    // this.app.get('/todos/:id', this.getTodo);
     this.app.get('/todos/active', this.getActiveTodos);
 
     this.app.put('/todos/:id', this.updateTodo);
@@ -22,7 +22,6 @@ export default class Todos {
 
   getTodo(req, res) {
     var id = req.params.id;
-
 
     TaskModel.find({_id: id})
         .populate('listId')

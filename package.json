@@ -45,6 +45,7 @@
     "mocha": "^3.0.2",
     "mocha-traceur": "^2.1.0",
     "mongoose-auto-increment": "^5.0.1",
+    "morgan": "^1.7.0",
     "nyc": "^8.1.0",
     "traceur": "0.0.111"
   },
