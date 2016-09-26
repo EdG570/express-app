@@ -1,10 +1,11 @@
 import { TaskModel } from '../data/Task.schema';
+import { requireAuth } from '../services/require_auth';
 
 export default class Todos {
   
   constructor (app) {
     this.app = app;
-    this.app.get('/todos', this.getTodos);
+    this.app.get('/todos', requireAuth, this.getTodos);
     this.app.get('/todos/:listid', this.getListTodos);
     // this.app.get('/todos/:id', this.getTodo);
     this.app.get('/todos/active', this.getActiveTodos);

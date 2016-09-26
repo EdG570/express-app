@@ -1,6 +1,5 @@
 import { UserModel as User } from '../data/User.schema';
 import jwt from 'jwt-simple';
-import { config } from '../../secret';
 import fs from 'fs';
 
 export default class SignUp {
@@ -39,7 +38,7 @@ export default class SignUp {
       const user = new User({
           email: email,
           password: password
-        });
+      });
 
       user.save(function(err, data) {
           if (err) {

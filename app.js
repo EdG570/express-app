@@ -7,6 +7,7 @@ import Todos from './src/routes/todos';
 import List from './src/routes/list';
 import User from './src/routes/user';
 import SignUp from './src/routes/sign_up';
+import SignIn from './src/routes/sign_in';
 import db from './src/data/db.json';
 
 let app = express();
@@ -20,6 +21,7 @@ let lists = new List(app);
 let index = new Index(app);
 let users = new User(app);
 let signup = new SignUp(app);
+let signin = new SignIn(app);
 
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
