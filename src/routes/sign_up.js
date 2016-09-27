@@ -15,6 +15,7 @@ export default class SignUp {
   }
 
   static tokenForUser(user) {
+    console.log(this);
     const timestamp = new Date().getTime();
     const secret = SignUp.secretForUser();
     return jwt.encode({ sub: user.id, iat: timestamp }, secret);

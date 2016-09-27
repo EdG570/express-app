@@ -22,5 +22,4 @@ export default class SignIn {
   signin(req, res, next) {
     res.send({ token: SignIn.tokenForUser(req.user) });
   }
-
 };
