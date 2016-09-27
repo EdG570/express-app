@@ -1,4 +1,5 @@
 import { requireSignIn } from '../services/require_auth';
+import jwt from 'jwt-simple';
 import fs from 'fs';
 
 export default class SignIn {
